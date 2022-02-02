@@ -6,7 +6,7 @@
 Write-Host Compare local <packageName> package vs. delivered package
 Write-Host Version: 1.0
  
-$basePath = ""
+$basePath = $PSScriptRoot
 $package = $basePath + '\package.json'
 Set-Location $basePath
 
