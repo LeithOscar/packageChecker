@@ -17,9 +17,10 @@ Write-Host "path to check:" $package  -ForegroundColor Yellow
 Write-Host "Start Process:"  -ForegroundColor Yellow  
 
 Foreach ($deps in $jsonDep.PSObject.Properties){
-                 
-                if($deps.Name.Contains("<packageName>"))
-                {                    
+                
+                #uncomment if you want to upgrade the specific package
+                #if($deps.Name.Contains("<packageName>"))
+                #{                    
                     $deliveredVersion= npm view $deps.name"@latest" version  
                     
                     if($deliveredVersion -eq $deps.value)
@@ -29,7 +30,7 @@ Foreach ($deps in $jsonDep.PSObject.Properties){
                     else{
                         Write-Host $deps.name $deps.value "must be upload to:" $deliveredVersion   -ForegroundColor Red  
                     }       
-                }     
+                #}     
 }
 
 Write-Host "end"  -ForegroundColor Yellow  
